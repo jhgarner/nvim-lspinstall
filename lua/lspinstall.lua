@@ -22,7 +22,7 @@ function M.install_server(lang)
 
   vim.cmd("new")
   local shell = vim.o.shell
-  vim.o.shell = "/bin/bash"
+  vim.o.shell = "/usr/bin/env bash"
   vim.fn.termopen("set -e\n" .. servers[lang].install_script,
                   { ["cwd"] = path, ["on_exit"] = onExit })
   vim.o.shell = shell
@@ -53,7 +53,7 @@ function M.uninstall_server(lang)
 
   vim.cmd("new")
   local shell = vim.o.shell
-  vim.o.shell = "/bin/bash"
+  vim.o.shell = "/usr/bin/env bash"
   vim.fn.termopen("set -e\n" .. (servers[lang].uninstall_script or ""),
                   { ["cwd"] = path, ["on_exit"] = onExit })
   vim.o.shell = shell
